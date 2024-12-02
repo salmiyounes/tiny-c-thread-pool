@@ -36,7 +36,7 @@ thpool thpool_init(int num_threads);
  *  @return 0 in success, -1 otherwise
 */
 
-int            thpool_add_work(thpool thpool_p, void (*function)(void *), void *arg);
+int   thpool_add_work(thpool thpool_p, void (*function)(void *), void *arg);
 
 /** 
  *  @brief Wait for all queue jobs to finish
@@ -49,8 +49,14 @@ int            thpool_add_work(thpool thpool_p, void (*function)(void *), void *
  *  @return nothing
 */
 
-void            thpool_wait(thpool thpool_p);
+void thpool_wait(thpool thpool_p);
 
-void            thpool_destroy(thpool thpool_p);
+void thpool_destroy(thpool thpool_p);
+
+int  thpool_num_threads_working(thpool thpool_p);
+
+void thpool_pause(thpool thpool_p);
+
+void thpool_resume(thpool thpool_p);
 
 #endif
