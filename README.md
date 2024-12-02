@@ -5,7 +5,8 @@ This is a minimal threadpool implementation.
 ## Run the exemple 
 
 ```sh
-gcc tinythpool.h tinythpool.c exemple.c -o exemple && ./exemple
+$ gcc tinythpool.c exemple.c -o exemple -pthread 
+$ ./exemple
 ```
 
 ## Basic usage
@@ -14,13 +15,13 @@ gcc tinythpool.h tinythpool.c exemple.c -o exemple && ./exemple
 #include "tinythpool.h"
 
 int main() {
-    thpool threadpool = thpool_init(4);
+    thpool threadpool = thpool_init(4); // Creating a thread pool with 4 threads
 
-    thpool_add_work(threadpool, (void *) function_p, (void *)arg_p);
+    thpool_add_work(threadpool, (void *) function_p, (void *)arg_p); // Add a new work to the thread pool
 
-    thpool_wait(threadpool);
+    thpool_wait(threadpool); // Wait for all jobs to finish
 
-    thpool_destroy(threadpool);
+    thpool_destroy(threadpool); // Destroy the thread pool
 
     return 0;
 }
